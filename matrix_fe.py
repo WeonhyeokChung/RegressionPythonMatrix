@@ -41,7 +41,6 @@ print(std_ols)
 ###############################################################################
 #                         FE Regression
 ###############################################################################
-
 theta_dummies = pd.get_dummies(df["theta_i"])
 phi_dummies = pd.get_dummies(df["phi_j"])
 
@@ -52,6 +51,7 @@ A = df[["intercept", "x1", "x2", "x3"]].values
 A = np.concatenate((A, theta_dummies, phi_dummies), axis=1)
 
 _k = A.shape[1]
+
 # betas
 _y = y-y.mean()
 _X = A-A.mean()
@@ -84,8 +84,6 @@ row_names    = ['x1', 'x2', 'x3']
 fe_output = pd.DataFrame(fe_sum, columns=col_names, index=row_names)
 
 fe_output.to_excel (r'fe_output.xlsx', index = True, header=True)    
-#fe_sum[0:1,1:2]=std_fe[1:2,1:2]
-#fe_sum[1:2,1:2]=std_fe[2:3,2:3]
 
 print(fe_sum)
 # I am still in the process of updating t-statistics and p-value.
