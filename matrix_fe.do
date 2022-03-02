@@ -41,17 +41,18 @@ gen x2 = rnormal(10,2)
 gen x3 = rnormal(6,1)+phi_j/3
 
 gen y = `beta1'*x1 + `beta2'*x2 + `beta3'*x3 + 5*theta_i + phi_j + rnormal(0,3)
-	
+save RegPyMat/matrix_fe, replace	
+clear
+
+
 *------------------------------------------------------------------------------*	
 * 							Analysis										   *
 *------------------------------------------------------------------------------*	
+log using "./RegPyMat/matrix_fe", replace
+
+use RegPyMat/matrix_fe
 reg y x1 x2	x3
 
-log using "./RegPyMat/matrix_fe", replace
 reghdfe y x1 x2 x3, a(theta_i phi_j)
-
-reghdfe y x1 x2 x3, a(theta_i phi_j) vce(cluster theta_i phi_j)
-
-save RegPyMat/matrix_fe, replace	
 	
 log close	
