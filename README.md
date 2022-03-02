@@ -4,7 +4,7 @@ I run regression using python matrix as this method is faster than regression in
 
 I use STATA to generate data and runregression. Then, I run regression using Python in a matrix form. Then, I compare the speed and results from the python to those from STATA.
 
-I found that when I run fixed effect regression with 10K number of observations, I spent around 3 minutes on STATA while 21 seconds on python. Evnironment of my computer is the following:
+I found that when I import dta file and run fixed effect regression with 10K number of observations, I spent around 1 minute on STATA while 20 seconds on python. Evnironment of my computer is the following:
 
 - MacBook Pro Retina (version 10.14.6 macOS Mojave) 
 
